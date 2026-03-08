@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: satishpatibandla/personal-website
   branch: main
 
 # Media files will be stored in the repo under images/uploads
