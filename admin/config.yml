@@ -2,6 +2,7 @@ backend:
   name: github
   repo: satishpatibandla/personal-website
   branch: main
+  app_id: YOUR_GITHUB_CLIENT_ID # Replace with your GitHub App Client ID
 
 # Media files will be stored in the repo under images/uploads
 media_folder: "images/uploads"
