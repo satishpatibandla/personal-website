@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog post by Satish Patibandla">
+    <title>Blog Post — Satish Patibandla</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">S<span>.</span>Patibandla</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="resources.html">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="nav-overlay" id="navOverlay"></div>
+    </nav>
+
+    <!-- Post Content -->
+    <article class="post-container" id="postContainer">
+        <a href="blog.html" class="post-back">← Back to Blog</a>
+        <header class="post-header">
+            <h1 class="post-title" id="postTitle">Loading...</h1>
+            <div class="post-meta">
+                <span id="postDate"></span>
+                <span class="separator"></span>
+                <div class="post-tags" id="postTags"></div>
+            </div>
+        </header>
+        <div class="post-body" id="postBody">
+            <div class="skeleton" style="height: 20px; margin-bottom: 12px;"></div>
+            <div class="skeleton" style="height: 20px; width: 80%; margin-bottom: 12px;"></div>
+            <div class="skeleton" style="height: 20px; width: 60%; margin-bottom: 24px;"></div>
+            <div class="skeleton" style="height: 200px; margin-bottom: 24px;"></div>
+            <div class="skeleton" style="height: 20px; margin-bottom: 12px;"></div>
+            <div class="skeleton" style="height: 20px; width: 90%;"></div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 <span>Satish Patibandla</span>. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/post.js"></script>
+</body>
+
+</html>

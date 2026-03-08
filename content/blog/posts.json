@@ -1,0 +1,32 @@
+[
+    {
+        "slug": "hello-world",
+        "title": "Hello World — Welcome to My Blog!",
+        "date": "2026-03-08",
+        "tags": [
+            "General",
+            "Personal"
+        ],
+        "excerpt": "Welcome to my corner of the internet! In this first post, I share why I started this blog and what you can expect to find here — from tech tutorials to personal reflections on the journey of lifelong learning."
+    },
+    {
+        "slug": "getting-started-with-python",
+        "title": "Getting Started with Python: A Beginner's Guide",
+        "date": "2026-03-06",
+        "tags": [
+            "Python",
+            "Tutorial"
+        ],
+        "excerpt": "Python is one of the most versatile programming languages out there. In this guide, I walk through the basics — from setting up your environment to writing your first script."
+    },
+    {
+        "slug": "ai-agents-overview",
+        "title": "Understanding AI Agents: The Future of Automation",
+        "date": "2026-03-04",
+        "tags": [
+            "AI",
+            "Technology"
+        ],
+        "excerpt": "AI agents are transforming how we build software. From AutoGen to LangChain, let's explore what makes agents powerful and where they're headed."
+    }
+]

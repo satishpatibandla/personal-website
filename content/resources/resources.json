@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Satish Patibandla — Resume (2025)",
+        "description": "My professional resume covering work experience, education, technical skills, and key projects.",
+        "date": "2025-10-04",
+        "category": "Career",
+        "type": "PDF",
+        "file": "content/resources/SATISH_PATIBANDLA_04_10_2025.pdf"
+    },
+    {
+        "title": "Python Cheat Sheet",
+        "description": "A comprehensive reference guide covering Python syntax, data structures, common patterns, and best practices for everyday development.",
+        "date": "2026-03-07",
+        "category": "Programming",
+        "type": "PDF",
+        "file": ""
+    },
+    {
+        "title": "AI & Machine Learning Fundamentals",
+        "description": "Notes covering core ML concepts — supervised learning, neural networks, transformers, and practical tips for building AI projects.",
+        "date": "2026-03-05",
+        "category": "AI & ML",
+        "type": "Notes",
+        "file": ""
+    },
+    {
+        "title": "Cloud Computing Overview",
+        "description": "An introductory guide to AWS, Azure, and GCP — comparing services, pricing, and use cases for different project needs.",
+        "date": "2026-03-01",
+        "category": "Cloud",
+        "type": "Article",
+        "file": ""
+    },
+    {
+        "title": "Git & GitHub Best Practices",
+        "description": "A practical guide to version control workflows, branching strategies, pull requests, and collaborative development on GitHub.",
+        "date": "2026-02-25",
+        "category": "Tools",
+        "type": "Notes",
+        "file": ""
+    }
+]
