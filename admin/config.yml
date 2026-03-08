@@ -3,6 +3,8 @@ backend:
   repo: satishpatibandla/personal-website
   branch: main
   app_id: Ov23liftJPMpolthotOG
+  base_url: https://github.com
+  auth_endpoint: login/oauth/authorize
 
 # Media files will be stored in the repo under images/uploads
 media_folder: "images/uploads"
