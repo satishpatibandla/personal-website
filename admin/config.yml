@@ -3,7 +3,6 @@ backend:
   repo: satishpatibandla/personal-website
   branch: main
   app_id: Ov23liftJPMpolthotOG
-  base_url: https://github.com
   auth_type: pkce
 
 # Media files will be stored in the repo under images/uploads
