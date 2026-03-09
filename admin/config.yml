@@ -2,16 +2,13 @@ backend:
   name: github
   repo: satishpatibandla/personal-website
   branch: main
-  app_id: Ov23liftJPMpolthotOG
-  base_url: https://github.com
+  app_id: 3049457
   auth_type: pkce
 
-# Media files will be stored in the repo under images/uploads
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  # Blog Posts
   - name: "blog"
     label: "Blog Posts"
     folder: "content/blog"
@@ -25,7 +22,6 @@ collections:
       - { label: "Excerpt", name: "excerpt", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  # Knowledge Resources
   - name: "resources"
     label: "Knowledge Resources"
     folder: "content/resources"
