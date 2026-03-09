@@ -2,8 +2,6 @@ backend:
   name: github
   repo: satishpatibandla/personal-website
   branch: main
-  base_url: https://github.com
-  auth_endpoint: /login/oauth/authorize
   app_id: Ov23liftJPMpolthotOG
   auth_type: pkce
 

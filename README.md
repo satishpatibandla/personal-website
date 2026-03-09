@@ -34,20 +34,16 @@ git push -u origin main
 
 ### Step 3: Enable Content Management (CMS)
 
-This project uses **Decap CMS + GitHub OAuth (PKCE)**.
+This project uses **Decap CMS + GitHub OAuth (PKCE)**, not Netlify Identity/Git Gateway.
 
-1. In GitHub, create an **OAuth App** with callback URL:
+1. In GitHub, create an **OAuth App** (or GitHub App for Decap OAuth) with callback URL:
    - `https://satishpatibandla.netlify.app/admin/`
-2. Set the backend auth keys in `admin/config.yml`:
-   - `base_url: https://github.com`
-   - `auth_endpoint: /login/oauth/authorize`
-   - `app_id: <your GitHub OAuth client id>`
-   - `auth_type: pkce`
+2. Copy the OAuth **Client ID** and set it as `app_id` in `admin/config.yml`
 3. Commit and deploy the change to Netlify
 4. Make sure your GitHub account has write access to `satishpatibandla/personal-website`
 5. Visit `https://satishpatibandla.netlify.app/admin/` and click **Login with GitHub**
 
-> Troubleshooting: if login opens `https://api.netlify.com/auth?...` (Not Found), your Decap backend auth endpoint is not configured for GitHub OAuth. Add `base_url` + `auth_endpoint` exactly as above.
+> If you see a URL like `https://github.com/auth?...`, remove `base_url` from `admin/config.yml`. For GitHub.com, Decap should use its default authorize endpoint.
 
 ---
 
