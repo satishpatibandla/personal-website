@@ -2,8 +2,6 @@ backend:
   name: github
   repo: satishpatibandla/personal-website
   branch: main
-  app_id: Iv23liDe6bfMhbJfS46U
-  auth_type: pkce
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
