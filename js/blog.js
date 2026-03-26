@@ -16,7 +16,8 @@ async function loadBlogPosts() {
 
     try {
         const response = await fetch('content/blog/posts.json');
-        const posts = await response.json();
+        const rawData = await response.json();
+        const posts = Array.isArray(rawData) ? rawData : (rawData?.posts || []);
 
         if (!posts || posts.length === 0) {
             grid.style.display = 'none';

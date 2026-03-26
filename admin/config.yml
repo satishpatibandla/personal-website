@@ -9,30 +9,39 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "blog"
-    label: "Blog Posts"
-    folder: "content/blog"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["General"] }
-      - { label: "Excerpt", name: "excerpt", widget: "text" }
-      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "site_content"
+    label: "Website Content"
+    files:
+      - label: "Blog Posts Index"
+        name: "blog_posts_index"
+        file: "content/blog/posts.json"
+        format: "json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.date}})"
+            fields:
+              - { label: "Slug", name: "slug", widget: "string", hint: "Must match the markdown filename in content/blog (without .md)." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+              - { label: "Tags", name: "tags", widget: "list", default: ["General"] }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Fallback Content", name: "content", widget: "markdown", required: false, hint: "Used if the matching markdown file is missing." }
 
-  - name: "resources"
-    label: "Knowledge Resources"
-    folder: "content/resources"
-    create: true
-    slug: "{{slug}}"
-    extension: "json"
-    format: "json"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-      - { label: "Category", name: "category", widget: "select", options: ["Programming", "AI & ML", "Cloud", "Tools", "Career", "Other"] }
-      - { label: "Type", name: "type", widget: "select", options: ["PDF", "Word", "Notes", "Slides", "Code", "Video", "Article"] }
-      - { label: "File", name: "file", widget: "file", required: false }
+      - label: "Resources Index"
+        name: "resources_index"
+        file: "content/resources/resources.json"
+        format: "json"
+        fields:
+          - label: "Resources"
+            name: "resources"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.date}})"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+              - { label: "Category", name: "category", widget: "select", options: ["Programming", "AI & ML", "Cloud", "Tools", "Career", "Other"] }
+              - { label: "Type", name: "type", widget: "select", options: ["PDF", "Word", "Notes", "Slides", "Code", "Video", "Article"] }
+              - { label: "File", name: "file", widget: "file", required: false }

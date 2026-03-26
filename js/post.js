@@ -25,7 +25,8 @@ async function loadPost() {
     try {
         // First, get post metadata from posts.json
         const metaResponse = await fetch('content/blog/posts.json');
-        const posts = await metaResponse.json();
+        const rawData = await metaResponse.json();
+        const posts = Array.isArray(rawData) ? rawData : (rawData?.posts || []);
         const postMeta = posts.find(p => p.slug === slug);
 
         if (!postMeta) {

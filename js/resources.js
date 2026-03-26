@@ -16,7 +16,8 @@ async function loadResources() {
 
     try {
         const response = await fetch('content/resources/resources.json');
-        const resources = await response.json();
+        const rawData = await response.json();
+        const resources = Array.isArray(rawData) ? rawData : (rawData?.resources || []);
 
         if (!resources || resources.length === 0) {
             grid.style.display = 'none';
