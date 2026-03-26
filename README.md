@@ -2,11 +2,11 @@
 
 A modern, dark-themed personal website with blog, knowledge resources, skills showcase, and contact form.
 
-**Live URL**: `https://satishpatibandla.netlify.app` (after deployment)
+**Live URL**: `https://YOUR_SITE_NAME.netlify.app/` (after deployment)
 
 ---
 
-## 🚀 Quick Deployment Guide
+## 🚀 Quick Deployment Guide (Netlify)
 
 ### Step 1: Push to GitHub
 
@@ -22,28 +22,28 @@ git branch -M main
 git push -u origin main
 ```
 
-### Step 2: Deploy on Netlify (Free)
+### Step 2: Deploy on Netlify
 
-1. Go to [netlify.com](https://app.netlify.com) and sign up with your GitHub account
-2. Click **"Add new site"** → **"Import an existing project"**
-3. Connect to GitHub and select the `personal-website` repository
-4. **Build settings**: Leave defaults (publish directory: `.`)
-5. Click **"Deploy site"**
-6. Once deployed, go to **Site settings** → **Change site name** → Enter `satishpatibandla`
-7. Your site is now live at **`satishpatibandla.netlify.app`** ✨
+1. Go to [netlify.com](https://app.netlify.com) and sign in with GitHub
+2. Click **Add new site** → **Import an existing project**
+3. Select your `personal-website` repository
+4. Keep default build settings (publish directory: `.`)
+5. Deploy
+6. Your site will be available at:
+   - `https://YOUR_SITE_NAME.netlify.app/`
 
-### Step 3: Enable Content Management (CMS)
+### Step 3: Enable the Admin CMS (`/admin`)
 
-This project uses **Decap CMS + GitHub OAuth (PKCE)**, not Netlify Identity/Git Gateway.
+This project uses **Decap CMS + GitHub OAuth (PKCE)**.
 
-1. In GitHub, create an **OAuth App** (or GitHub App for Decap OAuth) with callback URL:
-   - `https://satishpatibandla.netlify.app/admin/`
-2. Copy the OAuth **Client ID** and set it as `app_id` in `admin/config.yml`
-3. Commit and deploy the change to Netlify
-4. Make sure your GitHub account has write access to `satishpatibandla/personal-website`
-5. Visit `https://satishpatibandla.netlify.app/admin/` and click **Login with GitHub**
-
-> If you see a URL like `https://github.com/auth?...`, remove `base_url` from `admin/config.yml`. For GitHub.com, Decap should use its default authorize endpoint.
+1. In GitHub, create an OAuth App with callback URL:
+   - `https://YOUR_SITE_NAME.netlify.app/admin/`
+2. Copy the OAuth app/client ID and set it in `admin/config.yml` as `app_id`
+3. Update `repo` in `admin/config.yml` to `YOUR_USERNAME/personal-website`
+4. Commit and push
+5. Open:
+   - `https://YOUR_SITE_NAME.netlify.app/admin/`
+6. Login with GitHub and publish changes
 
 ---
 
@@ -53,37 +53,39 @@ This project uses **Decap CMS + GitHub OAuth (PKCE)**, not Netlify Identity/Git 
 ├── index.html              # Main page (Hero, About, Skills, Contact)
 ├── blog.html               # Blog listing page
 ├── post.html               # Individual blog post viewer
-├── resources.html           # Knowledge documents page
-├── css/style.css            # Design system (dark theme)
+├── resources.html          # Knowledge documents page
+├── css/style.css           # Design system (dark theme)
 ├── js/
-│   ├── main.js              # Navigation, animations, forms
-│   ├── blog.js              # Blog listing & filtering
-│   ├── post.js              # Single post rendering
-│   └── resources.js         # Resource listing & filtering
+│   ├── main.js             # Navigation, animations, forms
+│   ├── blog.js             # Blog listing & filtering
+│   ├── post.js             # Single post rendering
+│   └── resources.js        # Resource listing & filtering
 ├── content/
-│   ├── blog/                # Blog posts (.md) and metadata
-│   └── resources/           # Resource metadata (.json)
+│   ├── blog/               # Blog posts (.md) and metadata index
+│   └── resources/          # Resource metadata index
 ├── admin/
-│   ├── index.html           # Decap CMS admin panel
-│   └── config.yml           # CMS configuration
-├── netlify.toml             # Deployment config
-└── README.md                # This file
+│   ├── index.html          # Decap CMS admin panel
+│   └── config.yml          # CMS configuration
+└── README.md               # This file
 ```
 
 ## ✏️ Managing Content
 
 ### Via CMS (No Coding Needed)
 
-1. Go to `your-site.netlify.app/admin/`
-2. Log in with your credentials
-3. Create/edit blog posts and resources using the visual editor
-4. Click "Publish" — changes auto-deploy!
+1. Go to `https://YOUR_SITE_NAME.netlify.app/admin/`
+2. Login with GitHub
+3. Edit **Blog Posts Index** and **Resources Index**
+4. Click **Publish** (commits directly to your repo)
+
+> For blog posts, keep the `slug` matched with a markdown filename in `content/blog/<slug>.md` for full article rendering.
 
 ### Via Code
 
-- **Blog posts**: Add `.md` files to `content/blog/` and update `content/blog/posts.json`
-- **Resources**: Add entries to `content/resources/resources.json`
-- **Profile photo**: Replace the placeholder in the About section with your image
+- **Blog listing metadata**: edit `content/blog/posts.json`
+- **Blog article body**: edit/add markdown files in `content/blog/`
+- **Resources listing metadata**: edit `content/resources/resources.json`
+- **Profile photo**: replace `images/profile.png`
 
 ## 🎨 Customization
 
@@ -98,7 +100,6 @@ This project uses **Decap CMS + GitHub OAuth (PKCE)**, not Netlify Identity/Git 
 - ✅ Mobile responsive
 - ✅ Blog with markdown support
 - ✅ Knowledge resources with downloads
-- ✅ Contact form (Netlify Forms)
 - ✅ CMS for easy content management
 - ✅ Smooth scroll animations
 - ✅ SEO-friendly
