@@ -1,14 +1,4 @@
----
-title: "Hello World — Welcome to My Blog!"
-slug: "hello-world"
-date: "2026-03-08"
-tags:
-  - "General"
-  - "Personal"
-excerpt: "Welcome to my corner of the internet! In this first post, I share why I started this blog and what you can expect to find here."
-featured: true
-featuredImage: ""
----
+# Hello World — Welcome to My Blog
 
 Welcome to my blog! 👋 I'm **Satish Patibandla**, a developer, writer, and lifelong learner. This is my corner of the internet where I'll be sharing my thoughts, learnings, and experiences.
 

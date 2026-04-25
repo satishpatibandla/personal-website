@@ -1,14 +1,4 @@
----
-title: "Understanding AI Agents: The Future of Automation"
-slug: "ai-agents-overview"
-date: "2026-03-04"
-tags:
-  - "AI"
-  - "Technology"
-excerpt: "AI agents are transforming how we build software. From AutoGen to LangChain, let's explore what makes agents powerful and where they're headed."
-featured: false
-featuredImage: ""
----
+# Understanding AI Agents: The Future of Automation
 
 Artificial Intelligence agents are reshaping the landscape of software development and automation. Unlike traditional AI models that respond to single prompts, agents can plan, reason, use tools, and execute multi-step tasks autonomously.
 
