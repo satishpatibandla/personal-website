@@ -34,16 +34,17 @@ git push -u origin main
 
 ### Step 3: Enable the Admin CMS (`/admin`)
 
-This project uses **Decap CMS + GitHub OAuth (PKCE)**.
+This project uses **Decap CMS + Netlify Identity + Git Gateway**.
 
-1. In GitHub, create an OAuth App with callback URL:
-   - `https://YOUR_SITE_NAME.netlify.app/admin/`
-2. Copy the OAuth app/client ID and set it in `admin/config.yml` as `app_id`
-3. Update `repo` in `admin/config.yml` to `YOUR_USERNAME/personal-website`
-4. Commit and push
+1. In Netlify, open your site settings and enable:
+   - **Identity** (Registration: Invite only)
+   - **Git Gateway**
+2. In **Identity → External providers**, enable **GitHub**
+3. Invite your editor email in **Identity → Invite users**
+4. Commit and push this repository (the CMS config is already set for Git Gateway)
 5. Open:
    - `https://YOUR_SITE_NAME.netlify.app/admin/`
-6. Login with GitHub and publish changes
+6. Login and publish changes
 
 ---
 

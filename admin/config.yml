@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: satishpatibandla/personal-website
+  name: git-gateway
   branch: main
   commit_messages:
     create: 'Create {{collection}} "{{slug}}"'
@@ -8,7 +7,6 @@ backend:
     delete: 'Delete {{collection}} "{{slug}}"'
     uploadMedia: '[skip ci] Upload "{{path}}"'
     deleteMedia: '[skip ci] Delete "{{path}}"'
-  app_id: "Ov23liXQWIjJovS1j2Ol"
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
