@@ -1,16 +1,57 @@
 {
   "posts": [
     {
+      "slug": "decap-cms-test-post",
+      "title": "Testing Decap CMS on Netlify",
+      "date": "2026-04-25",
       "tags": [
         "CMS",
         "Netlify",
         "Test"
       ],
-      "slug": "decap-cms-test-post",
-      "title": "Testing Decap CMS on Netlify",
-      "date": "2026-04-25",
       "excerpt": "A short test entry to confirm Decap CMS can save content through Netlify Identity and Git Gateway.",
-      "content": "This is a test post created from the Decap CMS admin panel.\n\nIf this entry saves successfully, it confirms:\n\n- Netlify Identity login works\n- Git Gateway can commit to GitHub\n- Netlify can redeploy the site from CMS changes\n\nYou can delete this test post after verification.\n"
+      "featured": true,
+      "featuredImage": "",
+      "content": "This is a test post created from the Decap CMS admin panel.\n\nIf this entry saves successfully, it confirms:\n\n- Netlify Identity login works\n- Git Gateway can commit to GitHub\n- Netlify can redeploy the site from CMS changes\n\nYou can delete this test post after verification."
+    },
+    {
+      "slug": "hello-world",
+      "title": "Hello World — Welcome to My Blog!",
+      "date": "2026-03-08",
+      "tags": [
+        "General",
+        "Personal"
+      ],
+      "excerpt": "Welcome to my corner of the internet! In this first post, I share why I started this blog and what you can expect to find here.",
+      "featured": true,
+      "featuredImage": "",
+      "content": "Welcome to my blog! 👋 I'm **Satish Patibandla**, a developer, writer, and lifelong learner. This is my corner of the internet where I'll be sharing my thoughts, learnings, and experiences.\n\n## Why I Started This Blog\n\nI've always believed that the best way to learn something deeply is to teach it. Writing helps me organize my thoughts, solidify my understanding, and hopefully help others along the way.\n\n## What You Can Expect\n\nHere's what I plan to write about:\n\n- **Technical Tutorials** — Step-by-step guides on programming, AI, cloud computing, and more\n- **Project Walkthroughs** — Deep dives into projects I'm building\n- **Learning Notes** — Key takeaways from courses, books, and resources I explore\n- **Personal Reflections** — Thoughts on growth, productivity, and the developer journey\n\n## Let's Connect\n\nI'd love to hear from you! Feel free to reach out via the [contact page](/index.html#contact) or connect with me on [LinkedIn](https://linkedin.com/in/satishpatibandla) and [GitHub](https://github.com/satishpatibandla).\n\n> \"The more I learn, the more I realize how much I don't know.\" — Albert Einstein\n\nStay curious, keep building, and never stop learning! 🚀\n\n---\n\n*Thanks for reading! If you enjoyed this post, check back for more content coming soon.*"
+    },
+    {
+      "slug": "getting-started-with-python",
+      "title": "Getting Started with Python: A Beginner's Guide",
+      "date": "2026-03-06",
+      "tags": [
+        "Python",
+        "Tutorial"
+      ],
+      "excerpt": "Python is one of the most versatile programming languages out there. In this guide, I walk through the basics — from setting up your environment to writing your first script.",
+      "featured": false,
+      "featuredImage": "",
+      "content": "Python is one of the most popular and versatile programming languages in the world. Whether you're interested in web development, data science, AI, or automation — Python has you covered.\n\n## Why Python?\n\n- **Easy to learn** — Clean, readable syntax that feels like pseudocode\n- **Massive ecosystem** — Thousands of libraries for every use case\n- **Community** — One of the largest and most helpful developer communities\n- **Versatile** — From scripts to machine learning to web apps\n\n## Setting Up Your Environment\n\n### 1. Install Python\n\nDownload Python from [python.org](https://python.org). Make sure to check \"Add Python to PATH\" during installation.\n\n```bash\n# Verify installation\npython --version\n```\n\n### 2. Set Up a Virtual Environment\n\n```bash\n# Create a virtual environment\npython -m venv myproject\n\n# Activate it (Windows)\nmyproject\\Scripts\\activate\n\n# Activate it (Mac/Linux)\nsource myproject/bin/activate\n```\n\n### 3. Install Your First Package\n\n```bash\npip install requests\n```\n\n## Your First Python Script\n\nCreate a file called `hello.py`:\n\n```python\n# hello.py\nname = input(\"What's your name? \")\nprint(f\"Hello, {name}! Welcome to Python! 🐍\")\n\n# Let's do some math\nnumbers = [1, 2, 3, 4, 5]\ntotal = sum(numbers)\nprint(f\"The sum of {numbers} is {total}\")\n```\n\nRun it:\n\n```bash\npython hello.py\n```\n\n## Next Steps\n\nOnce you're comfortable with the basics, explore:\n\n1. **Data structures** — Lists, dictionaries, sets, tuples\n2. **Functions and classes** — Object-oriented programming\n3. **File I/O** — Reading and writing files\n4. **Web frameworks** — Flask or FastAPI\n5. **Data science** — pandas, numpy, matplotlib\n\n## Resources\n\n- [Official Python Tutorial](https://docs.python.org/3/tutorial/)\n- [Real Python](https://realpython.com/)\n- [Python for Everybody](https://www.py4e.com/)\n\n---\n\n*Happy coding! If you found this helpful, check out my other posts for more tutorials.*"
+    },
+    {
+      "slug": "ai-agents-overview",
+      "title": "Understanding AI Agents: The Future of Automation",
+      "date": "2026-03-04",
+      "tags": [
+        "AI",
+        "Technology"
+      ],
+      "excerpt": "AI agents are transforming how we build software. From AutoGen to LangChain, let's explore what makes agents powerful and where they're headed.",
+      "featured": false,
+      "featuredImage": "",
+      "content": "Artificial Intelligence agents are reshaping the landscape of software development and automation. Unlike traditional AI models that respond to single prompts, agents can plan, reason, use tools, and execute multi-step tasks autonomously.\n\n## What Are AI Agents?\n\nAn AI agent is a system that uses a large language model (LLM) as its \"brain\" to:\n\n- **Plan** — Break down complex tasks into steps\n- **Reason** — Make decisions based on context\n- **Act** — Execute actions using tools and APIs\n- **Learn** — Adapt based on feedback and memory\n\n## Key Frameworks\n\n### AutoGen (Microsoft)\n\nAutoGen enables building multi-agent conversations where multiple AI agents collaborate to solve problems.\n\n```python\nfrom autogen import AssistantAgent, UserProxyAgent\n\nassistant = AssistantAgent(\"assistant\")\nuser_proxy = UserProxyAgent(\"user_proxy\")\n\nuser_proxy.initiate_chat(\n    assistant,\n    message=\"Analyze the quarterly sales data\"\n)\n```\n\n### LangChain\n\nLangChain provides tools for building chains and agents with support for memory, retrieval, and tool use.\n\n### CrewAI\n\nCrewAI focuses on multi-agent orchestration with defined roles, goals, and collaborative workflows.\n\n## Real-World Applications\n\n1. **Customer Support** — Agents that handle complex queries end-to-end\n2. **Code Generation** — AI pair programmers that write, test, and debug code\n3. **Data Analysis** — Autonomous data exploration and reporting\n4. **Research** — Agents that search, summarize, and synthesize information\n\n## The Future\n\nWe're moving toward a world where AI agents can:\n\n- Collaborate in teams (multi-agent systems)\n- Maintain long-term memory across conversations\n- Integrate with enterprise tools and APIs\n- Handle increasingly complex, real-world workflows\n\n## Getting Started\n\nIf you want to experiment with AI agents:\n\n1. Start with a simple LLM API (OpenAI, Anthropic, or Gemini)\n2. Add tool use (function calling)\n3. Implement memory and context management\n4. Explore multi-agent frameworks like AutoGen or CrewAI\n\n---\n\n*The agent revolution is just beginning. Stay tuned for more deep dives into building practical AI agent systems.*"
     }
   ]
 }

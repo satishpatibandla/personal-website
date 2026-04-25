@@ -12,39 +12,132 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "site_content"
-    label: "Website Content"
+  - name: "settings"
+    label: "Site Settings"
     files:
-      - label: "Blog Posts Index"
-        name: "blog_posts_index"
-        file: "content/blog/posts.json"
+      - label: "Website Profile"
+        name: "website_profile"
+        file: "content/site/settings.json"
         format: "json"
         fields:
-          - label: "Posts"
-            name: "posts"
-            widget: "list"
-            summary: "{{fields.title}} ({{fields.date}})"
+          - label: "Brand"
+            name: "brand"
+            widget: "object"
             fields:
-              - { label: "Slug", name: "slug", widget: "string", hint: "Must match the markdown filename in content/blog (without .md)." }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-              - { label: "Tags", name: "tags", widget: "list", default: ["General"] }
-              - { label: "Excerpt", name: "excerpt", widget: "text" }
-              - { label: "Fallback Content", name: "content", widget: "markdown", required: false, hint: "Used if the matching markdown file is missing." }
+              - { label: "Full Name", name: "name", widget: "string" }
+              - { label: "Short Name", name: "shortName", widget: "string" }
+              - { label: "Footer Name", name: "footerName", widget: "string" }
+              - { label: "Profile Image", name: "profileImage", widget: "image", required: false }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Rotating Roles", name: "roles", widget: "list", default: ["AI Engineer"] }
+              - { label: "Primary CTA Text", name: "primaryCtaText", widget: "string" }
+              - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string" }
+              - { label: "Secondary CTA Text", name: "secondaryCtaText", widget: "string" }
+              - { label: "Secondary CTA URL", name: "secondaryCtaUrl", widget: "string" }
+              - { label: "Panel Title", name: "panelTitle", widget: "string" }
+              - { label: "Panel Text", name: "panelText", widget: "text" }
+              - { label: "Panel Signals", name: "signals", widget: "list", default: ["AI"] }
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - label: "Details"
+                name: "details"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+          - label: "Skills"
+            name: "skills"
+            widget: "list"
+            fields:
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Icon Label", name: "icon", widget: "string", required: false }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Skill Name", name: "name", widget: "string" }
+                  - { label: "Level", name: "level", widget: "string" }
+                  - { label: "Percent", name: "percent", widget: "number", value_type: "int", min: 0, max: 100 }
+          - label: "Resume"
+            name: "resume"
+            widget: "object"
+            fields:
+              - { label: "Button Label", name: "label", widget: "string" }
+              - { label: "Resume File", name: "file", widget: "file", required: false }
+          - label: "Social Links"
+            name: "socials"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Location", name: "location", widget: "string", required: false }
+          - label: "Homepage"
+            name: "homepage"
+            widget: "object"
+            fields:
+              - { label: "Post Limit", name: "postLimit", widget: "number", value_type: "int", min: 1, max: 12, default: 3 }
+              - { label: "Resource Limit", name: "resourceLimit", widget: "number", value_type: "int", min: 1, max: 12, default: 3 }
 
-      - label: "Resources Index"
-        name: "resources_index"
-        file: "content/resources/resources.json"
-        format: "json"
-        fields:
-          - label: "Resources"
-            name: "resources"
-            widget: "list"
-            summary: "{{fields.title}} ({{fields.date}})"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-              - { label: "Category", name: "category", widget: "select", options: ["Programming", "AI & ML", "Cloud", "Tools", "Career", "Other"] }
-              - { label: "Type", name: "type", widget: "select", options: ["PDF", "Word", "Notes", "Slides", "Code", "Video", "Article"] }
-              - { label: "File", name: "file", widget: "file", required: false }
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "content/blog"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{fields.slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Use lowercase words separated by hyphens." }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["General"] }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "resources"
+    label: "Resources"
+    label_singular: "Resource"
+    folder: "content/resources/items"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{fields.slug}}"
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Use lowercase words separated by hyphens." }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Category", name: "category", widget: "select", options: ["Programming", "AI & ML", "Cloud", "Tools", "Career", "Other"] }
+      - { label: "Type", name: "type", widget: "select", options: ["PDF", "Word", "Notes", "Slides", "Code", "Video", "Article"] }
+      - { label: "File Upload", name: "file", widget: "file", required: false }
+      - { label: "External URL", name: "externalUrl", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Notes", name: "body", widget: "markdown", required: false }

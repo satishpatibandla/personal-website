@@ -1,4 +1,14 @@
-# Getting Started with Python: A Beginner's Guide
+---
+title: "Getting Started with Python: A Beginner's Guide"
+slug: "getting-started-with-python"
+date: "2026-03-06"
+tags:
+  - "Python"
+  - "Tutorial"
+excerpt: "Python is one of the most versatile programming languages out there. In this guide, I walk through the basics — from setting up your environment to writing your first script."
+featured: false
+featuredImage: ""
+---
 
 Python is one of the most popular and versatile programming languages in the world. Whether you're interested in web development, data science, AI, or automation — Python has you covered.
 
