@@ -7,6 +7,12 @@
   <title>Satish Patibandla — AI Engineer</title>
   <meta name="description"
     content="Satish Patibandla — AI Engineer specializing in Generative AI, Agentic AI, Computer Vision, and Cloud platforms." />
+  <script>
+    const identityHashPattern = /(?:^|[#&])(recovery_token|invite_token|confirmation_token|access_token)=/;
+    if (identityHashPattern.test(window.location.hash)) {
+      window.location.replace(`/admin/${window.location.hash}`);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
