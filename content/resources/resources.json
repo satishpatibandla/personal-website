@@ -1,4 +1,5 @@
-[
+{
+  "resources": [
     {
         "title": "Satish Patibandla — Resume (2025)",
         "description": "My professional resume covering work experience, education, technical skills, and key projects.",
@@ -39,4 +40,5 @@
         "type": "Notes",
         "file": ""
     }
-]
+  ]
+}

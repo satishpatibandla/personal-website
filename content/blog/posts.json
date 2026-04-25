@@ -1,4 +1,5 @@
-[
+{
+  "posts": [
     {
         "slug": "hello-world",
         "title": "Hello World — Welcome to My Blog!",
@@ -29,4 +30,5 @@
         ],
         "excerpt": "AI agents are transforming how we build software. From AutoGen to LangChain, let's explore what makes agents powerful and where they're headed."
     }
-]
+  ]
+}
