@@ -5,7 +5,7 @@
   <rect x="1" y="1" width="358" height="118" rx="17" fill="none" stroke="#1f2a35" stroke-width="2"/>
   <circle cx="62" cy="60" r="30" fill="#00d4aa"/>
   <path d="M48 70c4 5 11 8 19 8 12 0 20-6 20-15 0-8-5-12-17-15l-8-2c-6-1-9-3-9-7 0-4 4-7 10-7 6 0 10 2 14 6l8-8c-5-6-12-9-22-9-12 0-20 7-20 17 0 8 5 13 17 16l8 2c6 1 9 3 9 7 0 4-4 6-10 6-6 0-11-2-15-7l-4 8z" fill="#0a0a0f"/>
-  <text x="112" y="53" fill="#f0f0f5" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800">Satish Patibandla</text>
-  <text x="114" y="82" fill="#a0a0b8" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">Content Manager</text>
-  <rect x="284" y="76" width="36" height="4" rx="2" fill="#00d4aa"/>
+  <text x="112" y="53" fill="#f0f0f5" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Satish Patibandla</text>
+  <text x="114" y="82" fill="#a0a0b8" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600">Content Manager</text>
+  <rect x="294" y="76" width="30" height="4" rx="2" fill="#00d4aa"/>
 </svg>
