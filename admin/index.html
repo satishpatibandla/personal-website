@@ -1,16 +1,311 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>Content Manager — Satish Patibandla</title>
+    <title>Content Manager - Satish Patibandla</title>
+    <link rel="preconnect" href="https://identity.netlify.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: rgba(18, 18, 26, 0.88);
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a82;
+            --accent: #00d4aa;
+            --accent-soft: rgba(0, 212, 170, 0.1);
+            --border: rgba(255, 255, 255, 0.08);
+            --danger: #ff6b6b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .admin-loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            padding: 32px;
+            background:
+                radial-gradient(circle at 12% 12%, rgba(0, 212, 170, 0.18), transparent 30rem),
+                radial-gradient(circle at 86% 18%, rgba(0, 180, 216, 0.12), transparent 28rem),
+                var(--bg-primary);
+            transition: opacity 220ms ease, visibility 220ms ease;
+        }
+
+        .admin-loading.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .admin-card {
+            width: min(960px, 100%);
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)), var(--bg-card);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+        }
+
+        .admin-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .admin-eyebrow::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 24px rgba(0, 212, 170, 0.55);
+        }
+
+        .admin-title {
+            margin: 0;
+            max-width: 760px;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.02;
+            letter-spacing: 0;
+        }
+
+        .admin-subtitle {
+            max-width: 680px;
+            margin: 18px 0 0;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .admin-steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .admin-step {
+            min-height: 138px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .admin-step-number {
+            display: inline-grid;
+            width: 28px;
+            height: 28px;
+            place-items: center;
+            margin-bottom: 14px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        .admin-step h2 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .admin-step p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .admin-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .admin-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+        }
+
+        .admin-spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.16);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: admin-spin 900ms linear infinite;
+        }
+
+        .admin-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .admin-link:hover {
+            text-decoration: underline;
+        }
+
+        img[alt="Logo"] {
+            width: min(360px, 84vw);
+            height: auto;
+        }
+
+        button {
+            border-radius: 8px;
+        }
+
+        .admin-error {
+            display: none;
+            margin-top: 18px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 107, 107, 0.08);
+            color: #ffd7d7;
+        }
+
+        .admin-loading.has-error .admin-error {
+            display: block;
+        }
+
+        .admin-loading.has-error .admin-spinner {
+            border-color: rgba(255, 107, 107, 0.24);
+            border-top-color: var(--danger);
+        }
+
+        @keyframes admin-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .admin-loading {
+                padding: 18px;
+            }
+
+            .admin-card {
+                padding: 24px;
+            }
+
+            .admin-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-step {
+                min-height: auto;
+            }
+
+            .admin-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
+    <main class="admin-loading" id="adminLoading" aria-live="polite">
+        <section class="admin-card" aria-labelledby="adminTitle">
+            <div class="admin-eyebrow">Satish Patibandla</div>
+            <h1 class="admin-title" id="adminTitle">Content Manager</h1>
+            <p class="admin-subtitle">
+                Sign in to update blog posts, resource links, downloads, dates, categories, and short summaries without
+                editing repository files by hand.
+            </p>
+
+            <div class="admin-steps" aria-label="Publishing workflow">
+                <article class="admin-step">
+                    <span class="admin-step-number">1</span>
+                    <h2>Choose content</h2>
+                    <p>Open Blog Posts or Knowledge Resources from the left sidebar after the editor loads.</p>
+                </article>
+                <article class="admin-step">
+                    <span class="admin-step-number">2</span>
+                    <h2>Edit with context</h2>
+                    <p>Each field includes practical hints for slugs, summaries, upload files, and publish dates.</p>
+                </article>
+                <article class="admin-step">
+                    <span class="admin-step-number">3</span>
+                    <h2>Publish changes</h2>
+                    <p>Use Publish to commit updates through Netlify Git Gateway and trigger a fresh deploy.</p>
+                </article>
+            </div>
+
+            <p class="admin-error" id="adminError">
+                The content manager scripts could not load. Check your connection, then refresh this page.
+            </p>
+
+            <footer class="admin-footer">
+                <div class="admin-status">
+                    <span class="admin-spinner" aria-hidden="true"></span>
+                    <span id="adminStatusText">Loading secure editor...</span>
+                </div>
+                <a class="admin-link" href="/" target="_blank" rel="noopener noreferrer">View live site</a>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+        function showAdminError(scriptName) {
+            var shell = document.getElementById('adminLoading');
+            var status = document.getElementById('adminStatusText');
+            var error = document.getElementById('adminError');
+
+            if (shell) shell.classList.add('has-error');
+            if (status) status.textContent = scriptName + ' failed to load.';
+            if (error) {
+                error.textContent = scriptName + ' could not load. Check your connection, then refresh this page.';
+            }
+        }
+
+        function hideAdminShell() {
+            var shell = document.getElementById('adminLoading');
+            if (!shell || shell.classList.contains('is-hidden')) return;
+
+            shell.classList.add('is-hidden');
+            window.setTimeout(function () {
+                if (shell.parentNode) shell.parentNode.removeChild(shell);
+            }, 260);
+        }
+    </script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+        onerror="showAdminError('Netlify Identity')"></script>
+    <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js" onerror="showAdminError('Decap CMS')"></script>
     <script>
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on('init', (user) => {
@@ -21,6 +316,29 @@
                 }
             });
         }
+
+        if (window.CMS) {
+            CMS.registerPreviewStyle('/css/style.css');
+        }
+
+        var adminRootObserver = new MutationObserver(function () {
+            var root = document.getElementById('nc-root');
+            if (root && root.textContent.trim().length > 0) {
+                hideAdminShell();
+                adminRootObserver.disconnect();
+            }
+        });
+
+        adminRootObserver.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        window.setTimeout(function () {
+            if (window.CMS && !document.getElementById('adminLoading')?.classList.contains('has-error')) {
+                hideAdminShell();
+            }
+        }, 3200);
     </script>
 </body>
 

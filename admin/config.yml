@@ -10,41 +10,129 @@ backend:
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
+site_url: "https://satishpatibandla.netlify.app"
+display_url: "https://satishpatibandla.netlify.app"
+logo_url: "/admin/logo.svg"
+
+editor:
+  preview: true
 
 collections:
   - name: "site_content"
-    label: "Website Content"
+    label: "Content Library"
+    label_singular: "Content Area"
+    description: "Edit the content shown on the public Blog and Resources pages."
     files:
-      - label: "Blog Posts Index"
+      - label: "Blog Posts"
         name: "blog_posts_index"
         file: "content/blog/posts.json"
         format: "json"
+        description: "Manage the cards shown on the Blog page. Full article files can still live in content/blog."
         fields:
           - label: "Posts"
             name: "posts"
             widget: "list"
-            summary: "{{fields.title}} ({{fields.date}})"
+            label_singular: "Blog Post"
+            summary: "{{fields.title}} - {{fields.date}}"
+            add_to_top: true
+            collapsed: true
+            minimize_collapsed: true
+            hint: "Newest posts appear first on the website. Keep the slug matched to content/blog/<slug>.md when a full article file exists."
             fields:
-              - { label: "Slug", name: "slug", widget: "string", hint: "Must match the markdown filename in content/blog (without .md)." }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-              - { label: "Tags", name: "tags", widget: "list", default: ["General"] }
-              - { label: "Excerpt", name: "excerpt", widget: "text" }
-              - { label: "Fallback Content", name: "content", widget: "markdown", required: false, hint: "Used if the matching markdown file is missing." }
+              - label: "Slug"
+                name: "slug"
+                widget: "string"
+                hint: "Use the URL-friendly filename without .md, for example getting-started-with-python."
+                pattern:
+                  - "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                  - "Use lowercase letters, numbers, and single hyphens only."
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                hint: "Public headline shown on the Blog page and post detail page."
+              - label: "Publish Date"
+                name: "date"
+                widget: "datetime"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"
+                hint: "Used for sorting and display. Newer dates appear first."
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                default: ["General"]
+                allow_add: true
+                hint: "Use one to three short topic labels."
+                field:
+                  label: "Tag"
+                  name: "tag"
+                  widget: "string"
+              - label: "Card Summary"
+                name: "excerpt"
+                widget: "text"
+                hint: "One or two sentences shown on the Blog listing card."
+              - label: "Fallback Article Body"
+                name: "content"
+                widget: "markdown"
+                required: false
+                hint: "Optional. Used only if content/blog/<slug>.md does not exist."
 
-      - label: "Resources Index"
+      - label: "Knowledge Resources"
         name: "resources_index"
         file: "content/resources/resources.json"
         format: "json"
+        description: "Manage downloads, links, and learning materials shown on the Resources page."
         fields:
           - label: "Resources"
             name: "resources"
             widget: "list"
-            summary: "{{fields.title}} ({{fields.date}})"
+            label_singular: "Resource"
+            summary: "{{fields.title}} - {{fields.category}}"
+            add_to_top: true
+            collapsed: true
+            minimize_collapsed: true
+            hint: "Resources are sorted by date on the website. Leave the file field empty to show Coming Soon."
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-              - { label: "Category", name: "category", widget: "select", options: ["Programming", "AI & ML", "Cloud", "Tools", "Career", "Other"] }
-              - { label: "Type", name: "type", widget: "select", options: ["PDF", "Word", "Notes", "Slides", "Code", "Video", "Article"] }
-              - { label: "File", name: "file", widget: "file", required: false }
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                hint: "Short, clear name for the resource card."
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                hint: "Plain-language summary of what the resource helps readers do or understand."
+              - label: "Date"
+                name: "date"
+                widget: "datetime"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"
+                hint: "Used for sorting and display. Newer dates appear first."
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                hint: "Choose the filter group where this resource belongs."
+                options:
+                  - { label: "Programming", value: "Programming" }
+                  - { label: "AI and ML", value: "AI & ML" }
+                  - { label: "Cloud", value: "Cloud" }
+                  - { label: "Tools", value: "Tools" }
+                  - { label: "Career", value: "Career" }
+                  - { label: "Other", value: "Other" }
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                hint: "Controls the label and icon used on the public resource card."
+                options:
+                  - { label: "PDF", value: "PDF" }
+                  - { label: "Word document", value: "Word" }
+                  - { label: "Notes", value: "Notes" }
+                  - { label: "Slides", value: "Slides" }
+                  - { label: "Code", value: "Code" }
+                  - { label: "Video", value: "Video" }
+                  - { label: "Article", value: "Article" }
+              - label: "Download File"
+                name: "file"
+                widget: "file"
+                required: false
+                hint: "Upload a file or leave empty if the resource is planned but not available yet."
